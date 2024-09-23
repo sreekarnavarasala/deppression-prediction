@@ -175,8 +175,8 @@
                     <h2>Depression Prediction App</h2>
                 </div>
 
-                <a href="about.html" class="disabled">About</a>
-                <a href="#" class="active">Predict</a>
+                <a href="{{ url_for('about') }}" class="disabled">About</a>
+                <a href="{{ url_for('predict') }}" class="active">Predict</a>
                 <a href="#" class="disabled">Sponsor</a>
             </div>
 
@@ -184,22 +184,22 @@
             <div class="content">
                 <div class="form-container">
                     <!-- Form to collect prediction inputs, with two columns -->
-                    <form id="predictForm" onsubmit="return handleSubmit()">
+                    <form id="predictForm" method="post" action="/make_predict">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="age">Age :</label>
-                                <input type="number" id="age" placeholder="Enter Age" min="0" required>
+                                <input type="number" name="age" placeholder="Enter Age" min="0" required>
                             </div>
                             <div class="form-group">
                                 <label for="income">Income :</label>
-                                <input type="number" id="income" placeholder="Enter Income" min="0" required>
+                                <input type="number" name="income" placeholder="Enter Income" min="0" required>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="marital-status">Marital Status :</label>
-                                <select id="marital-status" required>
+                                <select name="marital-status" required>
                                     <option value="">Select</option>
                                     <option value="Single">Single</option>
                                     <option value="Married">Married</option>
@@ -209,7 +209,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="smoking-status">Smoking Status :</label>
-                                <select id="smoking-status" required>
+                                <select name="smoking-status" required>
                                     <option value="">Select</option>
                                     <option value="Non-smoker">Non-smoker</option>
                                     <option value="Current">Current</option>
@@ -221,7 +221,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="children">Number of Children :</label>
-                                <select id="children" required>
+                                <select name="children" required>
                                     <option value="">Select</option>
                                     <option value="0">0</option>
                                     <option value="1">1</option>
@@ -232,7 +232,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="physical-activity">Physical Activity Level :</label>
-                                <select id="physical-activity" required>
+                                <select name="physical-activity" required>
                                     <option value="">Select</option>
                                     <option value="Active">Active</option>
                                     <option value="Moderate">Moderate</option>
@@ -244,7 +244,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="employment-status">Employment Status :</label>
-                                <select id="employment-status" required>
+                                <select name="employment-status" required>
                                     <option value="">Select</option>
                                     <option value="Employed">Employed</option>
                                     <option value="Unemployed">Unemployed</option>
@@ -252,7 +252,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="alcohol-consumption">Alcohol Consumption :</label>
-                                <select id="alcohol-consumption" required>
+                                <select name="alcohol-consumption" required>
                                     <option value="">Select</option>
                                     <option value="Low">Low</option>
                                     <option value="Moderate">Moderate</option>
@@ -264,7 +264,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="dietary-habits">Dietary Habits :</label>
-                                <select id="dietary-habits" required>
+                                <select name="dietary-habits" required>
                                     <option value="">Select</option>
                                     <option value="Healthy">Healthy</option>
                                     <option value="Moderate">Moderate</option>
@@ -273,7 +273,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sleep-patterns">Sleep Patterns :</label>
-                                <select id="sleep-patterns" required>
+                                <select name="sleep-patterns" required>
                                     <option value="">Select</option>
                                     <option value="Good">Good</option>
                                     <option value="Fair">Fair</option>
@@ -285,7 +285,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="mental-illness">History of Mental Illness :</label>
-                                <select id="mental-illness" required>
+                                <select name="mental-illness" required>
                                     <option value="">Select</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -293,7 +293,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="substance-abuse">History of Substance Abuse :</label>
-                                <select id="substance-abuse" required>
+                                <select name="substance-abuse" required>
                                     <option value="">Select</option>
                                     <option value="Yes">Yes</option>
                                     <option value="No">No</option>
@@ -303,7 +303,13 @@
 
                         <!-- Predict Button -->
                         <button type="submit" class="btn-predict">Predict</button>
+                        <!-- <input type="submit" value="Predict"> -->
                     </form>
+
+                    <!-- Display the prediction result -->
+                    {% if prediction %}
+                        <div class="alert alert-info mt-4">Prediction Result: {{ prediction }}</div>
+                    {% endif %}
                 </div>
             </div>
         </div>
