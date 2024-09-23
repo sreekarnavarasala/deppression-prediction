@@ -1,40 +1,3 @@
-# app.py
-
-# from flask import Flask, request, jsonify, render_template
-# import pickle
-# import numpy as np
-
-# # Load the trained model
-# model_path = 'model.pkl'
-# with open(model_path, 'rb') as file:
-#     model = pickle.load(file)
-
-# app = Flask(__name__)
-
-# @app.route('/')
-# def home():
-#     return render_template('index.html')
-
-# @app.route('/predict', methods=['POST'])
-# def predict():
-#     # Extract data from form
-#     int_features = [int(x) for x in request.form.values()]
-#     final_features = [np.array(int_features)]
-    
-#     # Make prediction
-#     prediction = model.predict(final_features)
-#     output = 'Placed' if prediction[0] == 1 else 'Not Placed'
-
-#     return render_template('index.html', prediction_text='Prediction: {}'.format(output))
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
-
-
-###################################################################################################################
-
-
 from flask import Flask, render_template, request
 import pickle
 import numpy as np
@@ -78,6 +41,8 @@ def make_predict():
         # Prepare the data for prediction (raw inputs, no conversion)
         input_data = [[age, marital_status, children, smoking_status, physical_activity, employment_status, income,     
                       alcohol_consumption, dietary_habits, sleep_patterns, mental_illness, substance_abuse]]
+        
+        # return input_data
 
         # Get the prediction
         prediction = model.predict(input_data)[0]
@@ -85,7 +50,6 @@ def make_predict():
             prediction = "No Depression"
         else:
             prediction = "Suffering from Depression"
-        # print(prediction)
 
     return render_template('/predict.html', prediction=prediction)
 
