@@ -51,7 +51,10 @@ def make_predict():
         else:
             prediction = "Suffering from Depression"
 
-    return render_template('/predict.html', prediction=prediction)
+    return render_template('/predict.html', prediction=prediction, 
+                           age=age, marital_status=marital_status, children=children, smoking_status=smoking_status, physical_activity=physical_activity,
+                           employment_status=employment_status, income=income, alcohol_consumption=alcohol_consumption, dietary_habits=dietary_habits, sleep_patterns=sleep_patterns,
+                           mental_illness=mental_illness, substance_abuse=substance_abuse)
 
 if __name__ == '__main__':
     app.run(debug=True)
