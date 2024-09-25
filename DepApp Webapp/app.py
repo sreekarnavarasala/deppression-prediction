@@ -45,16 +45,18 @@ def make_predict():
         # return input_data
 
         # Get the prediction
-        prediction = model.predict(input_data)[0]
-        if prediction == 0:
-            prediction = "No Depression"
+        prediction1 = model.predict(input_data)[0]
+        if prediction1 == 0:
+            prediction = "This Data point has No Depression"
         else:
-            prediction = "Suffering from Depression"
+            prediction = "ALERT!!! This Data point is suffering from Depression. Please Call 1800-599-0019(Govenment's Mental Health Rehabilitation Helpline)"
 
-    return render_template('/predict.html', prediction=prediction, 
+    return render_template('/predict.html', prediction=prediction, prediction1=prediction1,
                            age=age, marital_status=marital_status, children=children, smoking_status=smoking_status, physical_activity=physical_activity,
                            employment_status=employment_status, income=income, alcohol_consumption=alcohol_consumption, dietary_habits=dietary_habits, sleep_patterns=sleep_patterns,
                            mental_illness=mental_illness, substance_abuse=substance_abuse)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

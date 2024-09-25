@@ -18,7 +18,7 @@
             margin: 0;
             /* font-family: 'Arial', sans-serif; */
             font-family: "Nunito Sans", sans-serif;
-            color: #333;
+            color: #000;
             background-image: url('/static/background1.png'); /* URL of your image */
             background-size: cover; /* Ensures the image covers the entire screen */
             background-position: center; /* Centers the image */
@@ -164,8 +164,58 @@
         }
 
         .btn-predict:hover {
-            background-color: #0056b3;
+            background-color: #333;
+            color: #ccc;
         }
+        
+
+        /* Modal header background and text colors */
+        .modal-header {
+            background-color: #ccc; /* Bootstrap primary color */
+            padding: 8px;
+            padding-left: 15px;
+            text-align: center;
+        }
+
+        .modal-footer {
+            background-color: none; /* Light gray */
+            padding: 5px;
+        }
+
+
+        /* Modal body text color */
+        .modal-body, .modal-header, .modal-footer {
+            color: black; /* Dark text */
+            border: none; /* Remove the bottom border */
+        }
+
+        /* Yes Prediction */
+        .modal-contentmodal-yes {
+            background-color: #FFCCCC;
+
+        }
+
+        /* No Prediction */
+        .modal-contentmodal-no {
+            background-color: #E1FFC9;
+        }
+
+        /* Modal footer background and button colors */
+        .btn-pre {
+        background-color: #F2C335; /* Green background */
+        color: #000000; /* White text */
+        border: none; /* No border */
+        border-radius: 5px; /* Rounded corners */
+        }
+
+        .btn-pre:hover {
+            background-color: #333;
+            color: #ccc;
+        }
+        
+
+        /* Customize the modal buttons */
+
     </style>
 </head>
 <body>
