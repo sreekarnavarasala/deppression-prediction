@@ -68,4 +68,4 @@ Contributions to this project are welcome! Feel free to fork the repository, exp
 
 ## Contact
 
-For any questions or collaboration opportunities, please reach out via dile2107@gmail.com.
+For any questions or collaboration opportunities, please reach out via navarasalasreekar@gmail.com.
